@@ -34,7 +34,7 @@ v1.1.1
 
 ### Windows Standalone `.exe`
 
-1. Download the `main.exe` from the [Releases](#) tab (or build it yourself).
+1. Download the `main.exe` from the [Releases](https://github.com/MIKI0001/Subverse-Save-Editor/releases/tag/1.1.1) tab (or build it yourself).
 2. Double-click to launch.
 3. Use the file picker to open a Subverse save file (usually located in your user `AppData` folder).
 4. Edit values and save.
