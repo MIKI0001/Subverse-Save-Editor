@@ -1,25 +1,21 @@
 # Subverse-Save-Editor
 AI generated code, but checked and refactored by me. Finding the relavant stuff (devotion stuff) structure in the gvas save file is also me
-![image](https://github.com/user-attachments/assets/ae37e44a-4931-4b52-bd91-181ade987943)
-![image](https://github.com/user-attachments/assets/19140981-ba05-4e33-bb22-8161235d6b7a)
-![image](https://github.com/user-attachments/assets/0f63cd45-0f87-40dd-96c2-12e8ace5fec2)
-
-
 # Subverse Save Editor
 
 A standalone Subverse save editor written in Python with a simple GUI built using Tkinter. This tool allows you to modify your save file's values for characters, resources, and progress.
 
-![screenshot](screenshot.png) <!-- Replace or remove if you don't have a screenshot -->
+![image](https://github.com/user-attachments/assets/4b0a7f76-f649-4644-a35d-b24f59bb0d2a)
+![image](https://github.com/user-attachments/assets/05b0a4d4-03d4-4606-9e90-28da86c22ec7)
+
 
 ---
 
 ## Features
 
 - View and edit character levels
-- Modify in-game resources (e.g., DNA, credits, materials)
-- Basic save file integrity check
+- Modify in-game stuff (e.g., BIO, credits, and Tech/Tek)
 - Lightweight standalone `.exe` (no install required)
-
+- Advanced editing of properties (if you think you can handle it, try it out)
 ---
 
 ## Requirements
