@@ -487,27 +487,23 @@ class SaveEditorUI:
         )
         label.grid(row=row, column=0, sticky='w', padx=5, pady=2)
 
-        # Create the entry widget first
         entry = ttk.Entry(self.char_property_frame, width=20)
-        entry.grid(row=row, column=1, padx=5, pady=2)
-        
-        # Set the value directly in the entry widget
         entry.delete(0, tk.END)
         entry.insert(0, str(prop['value']))
-        
-        # Store references
+        entry.grid(row=row, column=1, padx=5, pady=2)
+
         self.property_labels[prop['name']] = label
         self.property_entries[prop['name']] = entry
 
-        # Apply button
+        # Apply button with updated command
         apply_btn = ttk.Button(
             self.char_property_frame,
             text="Apply",
-            command=lambda: self.apply_property_change(entry, prop)
+            command=lambda e=entry, p=prop: self.apply_property_change(e, p)
         )
         apply_btn.grid(row=row, column=2, padx=5, pady=2)
 
-        # Change tracking using direct entry access
+        # Change tracking
         def on_change(event):
             current_text = label.cget("text")
             if not current_text.startswith("*"):
@@ -516,14 +512,34 @@ class SaveEditorUI:
         entry.bind('<KeyRelease>', on_change)
 
     def apply_property_change(self, entry: ttk.Entry, prop_info: Dict[str, Any]) -> None:
-        """Apply a single property change."""
+        """Apply a single property change without refreshing other properties."""
         try:
-            new_val = int(entry.get())  # This is correct
+            new_val = int(entry.get())
+            
+            # Update the content buffer
             self.content = SaveFileHandler.overwrite_int(
                 self.content,
                 prop_info['data_start'],
                 new_val
             )
+            
+            # Update the specific property in our properties list
+            for prop in self.properties:
+                if prop['name'] == prop_info['name'] and prop['data_start'] == prop_info['data_start']:
+                    prop['value'] = new_val
+                    break
+                    
+            # Update the entry widget directly without refreshing others
+            entry.delete(0, tk.END)
+            entry.insert(0, str(new_val))
+            
+            # Update the label to remove the "*" change indicator
+            label = self.property_labels.get(prop_info['name'])
+            if label:
+                current_text = label.cget("text")
+                if current_text.startswith("*"):
+                    label.config(text=current_text[2:])
+                    
             messagebox.showinfo(
                 "Applied",
                 f"Applied new value {new_val} to {prop_info['name']}"
@@ -549,6 +565,9 @@ class SaveEditorUI:
         
         if save_path:
             try:
+                # Refresh the edited_values dictionary before saving
+                self.edited_values = {p['name']: p['value'] for p in self.properties}
+                
                 with open(save_path, "wb") as file:
                     file.write(self.content)
                 messagebox.showinfo("Success", f"File saved to {save_path}")
