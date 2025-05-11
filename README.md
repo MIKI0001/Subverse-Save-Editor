@@ -1,8 +1,8 @@
 # Subverse-Save-Editor
-AI generated code (not a py programmer), but checked and refactored by me. Finding the relavant stuff (devotion stuff) structure in the gvas save file is also me
+AI generated code (not a py programmer), but checked and refactored by me. Finding the relavant stuff (devotion stuff) structure in the gvas save file is also me. Also the way the data is gotten is pretty bad since it doesnt actually parse the save file fully
 # Subverse Save Editor
 
-A standalone Subverse save editor written in Python with a simple GUI built using Tkinter. This tool allows you to modify your save file's values for characters, resources, and progress.
+A standalone Subverse save editor written in Python with a simple GUI built using Tkinter.
 
 ![image](https://github.com/user-attachments/assets/4b0a7f76-f649-4644-a35d-b24f59bb0d2a)
 ![image](https://github.com/user-attachments/assets/05b0a4d4-03d4-4606-9e90-28da86c22ec7)
